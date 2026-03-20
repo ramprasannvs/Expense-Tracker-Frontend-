@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { APIUrl, handleError, handleSuccess } from '../utils';
 import { ToastContainer } from 'react-toastify';
@@ -60,7 +60,7 @@ function Home() {
         }
     }
 
-    const fetchExpenses = async () => {
+    const fetchExpenses = useCallback(async () => {
         try {
             const url = `${APIUrl}/expenses`;
             const headers = {
@@ -80,7 +80,7 @@ function Home() {
         } catch (err) {
             handleError(err);
         }
-    }
+    }, [navigate]);
 
 
 
@@ -112,7 +112,7 @@ function Home() {
 
     useEffect(() => {
         fetchExpenses()
-    }, [])
+    }, [fetchExpenses])
 
     return (
         <div>
