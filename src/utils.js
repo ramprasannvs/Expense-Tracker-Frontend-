@@ -12,4 +12,4 @@ export const handleError = (msg) => {
     })
 }
 
-export const APIUrl = 'https://expense-tracker-backned-90.vercel.app/';
+export const APIUrl = 'https://expense-tracker-backned-90.vercel.app';
